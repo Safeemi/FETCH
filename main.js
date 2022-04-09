@@ -3,7 +3,7 @@ const getButton = document.querySelector(".get-button");
 const reposData = document.querySelector(".show-data");
 
 getButton.onclick = function () {
-  return getRepos();
+ getRepos();
 };
 // Get repos function
 
@@ -11,23 +11,18 @@ function getRepos() {
   if (theInput.value == "") {
     reposData.innerHTML = "<span> Please Write Github Usename </span>";
   } else {
-      
-    handleFetchUserMeeting = () => {
-        fetch(`https://randomuser.me`)
-        .then(response => response.json())
-        .then(data => this.setstate{userList: data},() => {
-            if (Array.isArray(data)){
-                data.filter(el => el.age > 30).array.forEach(el => {
-                    el.meetings.forEach(mtId => {
-                        fetch(`https://randomuser.me/meetings/${mtId}`)
-                        .then(response => response.json())
-                        .then(data => console.log('meetings' , data.name)
-                        
-                    })
-                    
-                })
-            }
-        })
-    }
-  
+      let userListDom = document.querySelector("#userList")
+    fetch(`https://randomuser.me/api/?results=150`)
+      .then((response) => response.json())
+      .then((response) => console.log(response));
+      let results = responseJson.results;
+      results.forEach(item => {
+         let liDOM = document.createElement('li')
+         liDOM.innerHTML = item.age
+         userListDom.appendChild(liDOM)
+            
+          
+          
+      });
   }
+}
